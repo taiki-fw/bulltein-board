@@ -3,19 +3,19 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
-  def index
-    @comments = Comment.all
-  end
+  # def index
+  #   @comments = Comment.all
+  # end
 
   # GET /comments/1
   # GET /comments/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /comments/new
-  def new
-    @comment = Comment.new
-  end
+  # def new
+  #   @comment = Comment.new
+  # end
 
   # GET /comments/1/edit
   def edit
@@ -55,9 +55,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @board = Board.find(params[:board_id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @board, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
