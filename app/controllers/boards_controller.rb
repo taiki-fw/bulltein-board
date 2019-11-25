@@ -10,6 +10,8 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    @comments = @board.comments
+    @new_comment = Comment.new
   end
 
   # GET /boards/new
