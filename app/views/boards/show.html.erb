@@ -4,6 +4,14 @@
   <strong>Title:</strong>
   <%= @board.title %>
 </p>
+<%= render 'comments/form', comment: @new_comment %>
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <p><%= comment.body %></p>
+    <p><%= comment.updated_at %></p>
+  </div>
+<% end %>
+
 
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
