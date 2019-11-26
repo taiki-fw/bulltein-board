@@ -1,9 +1,13 @@
-.board {
-  border: 1px solid gray;
-  td {
-    padding: 1em 0.5em;;
-    border-right: 1px solid gray;
-  }
+@import "materialize/components/color-variables";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import 'materialize';
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2em;
 }
 
 .board__title {
