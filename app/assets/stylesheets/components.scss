@@ -1,0 +1,12 @@
+.board {
+  border: 1px solid gray;
+  td {
+    padding: 1em 0.5em;;
+    border-right: 1px solid gray;
+  }
+}
+
+.board__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
