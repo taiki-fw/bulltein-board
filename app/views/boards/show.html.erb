@@ -7,12 +7,14 @@
 <%= render 'comments/form', comment: @new_comment %>
 <% @comments.each do |comment| %>
   <div class="comment">
-    <div class="comment__info">
-      <p><%= comment.body %></p>
-      <p><%= comment.updated_at %></p>
-    </div>
+    <%= link_to board_comment_path(@board, comment) do %>
+      <div class="comment__info">
+        <p><%= comment.body %></p>
+        <p><%= comment.updated_at %></p>
+      </div>
+    <% end %>
     <div class="comment__action">
-      <%= link_to '削除', board_comment_path(@board,comment), method: :delete, data: {confirm: "コメント："+comment.body+"\n削除しますか？"} %>
+      <%= link_to '削除', board_comment_path(@board, comment), method: :delete, data: {confirm: "コメント：" + comment.body + "\n削除しますか？"} %>
     </div>
   </div>
 <% end %>
