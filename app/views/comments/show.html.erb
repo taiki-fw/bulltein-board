@@ -1,9 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @comment.body %>
+  <strong>Title:</strong>
+  <%= @board.title %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<div class="comment">
+  <div class="comment__info">
+    <p><%= @comment.body %></p>
+    <p><%= @comment.updated_at %></p>
+  </div>
+  <div class="comment__action">
+    <%= link_to '削除', board_comment_path(@board, @comment), method: :delete, data: {confirm: "コメント：" + @comment.body + "\n削除しますか？"} %>
+  </div>
+</div>
+
+<%= render 'replies/form', reply: @new_reply %>
+
+<% @replies.each do |reply| %>
+  <div class="comment">
+    <div class="comment__info">
+      <p><%= reply.body %></p>
+      <p><%= reply.updated_at %></p>
+    </div>
+  </div>
+<% end %>
+
+<!--<%#= link_to 'Edit', edit_comment_path(@comment) %> |-->
+<%#= link_to 'Back', comments_path %>

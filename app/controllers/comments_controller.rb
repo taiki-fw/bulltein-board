@@ -9,8 +9,10 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   # GET /comments/1.json
-  # def show
-  # end
+  def show
+    @replies = @comment.replies
+    @new_reply = Reply.new
+  end
 
   # GET /comments/new
   # def new
@@ -18,8 +20,8 @@ class CommentsController < ApplicationController
   # end
 
   # GET /comments/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /comments
   # POST /comments.json
@@ -40,17 +42,17 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @comment.update(comment_params)
+  #       format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @comment }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
@@ -66,7 +68,8 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      @board = Board.find(params[:board_id])
+      @comment = @board.comments.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -3,32 +3,33 @@ class RepliesController < ApplicationController
 
   # GET /replies
   # GET /replies.json
-  def index
-    @replies = Reply.all
-  end
+  # def index
+  #   @replies = Reply.all
+  # end
 
   # GET /replies/1
   # GET /replies/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /replies/new
-  def new
-    @reply = Reply.new
-  end
+  # def new
+  #   @reply = Reply.new
+  # end
 
   # GET /replies/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /replies
   # POST /replies.json
   def create
-    @reply = Reply.new(reply_params)
+    @comment = Comment.find(params[:comment_id])
+    @reply = @comment.replies.new(reply_params)
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+        format.html { redirect_to board_comment_path(@comment.board,@comment), notice: 'Reply was successfully created.' }
         format.json { render :show, status: :created, location: @reply }
       else
         format.html { render :new }
@@ -39,17 +40,17 @@ class RepliesController < ApplicationController
 
   # PATCH/PUT /replies/1
   # PATCH/PUT /replies/1.json
-  def update
-    respond_to do |format|
-      if @reply.update(reply_params)
-        format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
-        format.json { render :show, status: :ok, location: @reply }
-      else
-        format.html { render :edit }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @reply.update(reply_params)
+  #       format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @reply }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @reply.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /replies/1
   # DELETE /replies/1.json

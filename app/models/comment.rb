@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :board
-  has_many :replys
+  has_many :replies, dependent: :destroy
 end
