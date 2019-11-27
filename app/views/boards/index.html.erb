@@ -2,8 +2,6 @@
 
 <h1 class="title">Boards</h1>
 
-<%= render 'form', board: @board %>
-
 <% @boards.each do |board| %>
   <div class="board">
     <div class="board__action close"><%= link_to board, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn red white-text" do %>
