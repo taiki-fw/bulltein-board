@@ -2,20 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.board {
-  position: relative;
-  text-align: left;
-  border: 1px solid grey;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-flow: nowrap row;
-  justify-content: left;
-  align-items: center;
-  & > * {
-    padding: 1em 0;
-  }
-}
-
 .board__body {
   width: 100%;
   a {
@@ -36,4 +22,18 @@
   top: 0;
   right: 0;
   transform: translate(50%, -50%);
+}
+
+.board {
+  position: relative;
+  text-align: left;
+  border: 1px solid grey;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: left;
+  align-items: center;
+  & > * {
+    padding: 1em 0;
+  }
 }
