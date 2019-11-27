@@ -1,28 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p>
+<h2 class="title board__title">
+  Title: <%= @board.title %>
+</h2>
 
 <div class="comment">
-  <div class="comment__info">
-    <p><%= @comment.body %></p>
-    <p><%= @comment.updated_at %></p>
-  </div>
-  <div class="comment__action">
-    <%= link_to '削除', board_comment_path(@board, @comment), method: :delete, data: {confirm: "コメント：" + @comment.body + "\n削除しますか？"} %>
-  </div>
+  <%= link_to board_comment_path(@board, @comment), method: :delete, data: {confirm: "コメント：" + @comment.body + "\n削除しますか？"}, class: "btn-floating btn-small black white-text comment__action" do %>
+    <i class="material-icons">
+      clear
+    </i>
+  <% end %>
+  <%= link_to board_comment_path(@board, @comment), class: "comment__body" do %>
+    <div class="comment__content">
+      <h3 class="comment__title"><%= @comment.body %></h3>
+      <p class="time"><%= @comment.updated_at %></p>
+    </div>
+    <div class="comment__info">
+      <i class="material-icons">
+        reply
+      </i>
+      <span>
+          <%= @comment.replies.count %>
+        </span>
+    </div>
+  <% end %>
 </div>
 
 <%= render 'replies/form', reply: @new_reply %>
 
 <% @replies.each do |reply| %>
-  <div class="comment">
-    <div class="comment__info">
-      <p><%= reply.body %></p>
-      <p><%= reply.updated_at %></p>
-    </div>
+  <div class="reply">
+    <p><%= reply.body %></p>
+    <p class="time"><%= reply.updated_at %></p>
   </div>
 <% end %>
 
