@@ -1,7 +1,7 @@
 # README
 
 * DB Relation
-https://www.dropbox.com/s/7ly5ufcurlq3aec/ateam.png?dl=0
+![image](https://user-images.githubusercontent.com/43266182/69704584-0f8d1880-1137-11ea-92cc-b4b3abaf96e7.png)
 
 * Ruby version
 
