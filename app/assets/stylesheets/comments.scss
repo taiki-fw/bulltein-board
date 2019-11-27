@@ -1,3 +1,41 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$material-icon-width: 32.4px;
+
+.comment__time {
+  color: #666666;
+}
+
+.comment__info {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.comment {
+  display: flex;
+  flex-flow: nowrap row;
+  border: 1px solid gray;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 1rem $material-icon-width 1rem 0;
+
+  .comment__action {
+    transform: translate(-50%, -100%);
+  }
+
+  .comment__body {
+    width: 100%;
+  }
+
+  .comment__content {
+    width: 100%;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+}

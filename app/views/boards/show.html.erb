@@ -1,21 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h2 class="board__title">
   <%= @board.title %>
-</p>
+</h2>
+
 <%= render 'comments/form', comment: @new_comment %>
+
 <% @comments.each do |comment| %>
   <div class="comment">
-    <%= link_to board_comment_path(@board, comment) do %>
+    <%= link_to board_comment_path(@board, comment), method: :delete, data: {confirm: "コメント：" + comment.body + "\n削除しますか？"}, class: "btn-floating btn-small black white-text comment__action" do %>
+      <i class="material-icons">
+        clear
+      </i>
+    <% end %>
+    <%= link_to board_comment_path(@board, comment), class: "comment__body" do %>
+      <div class="comment__content">
+        <h3 class="comment__title"><%= comment.body %></h3>
+        <p class="comment__time"><%= comment.updated_at %></p>
+      </div>
       <div class="comment__info">
-        <p><%= comment.body %></p>
-        <p><%= comment.updated_at %></p>
+        <i class="material-icons">
+          reply
+        </i>
+        <span>
+          <%= comment.replies.count %>
+        </span>
       </div>
     <% end %>
-    <div class="comment__action">
-      <%= link_to '削除', board_comment_path(@board, comment), method: :delete, data: {confirm: "コメント：" + comment.body + "\n削除しますか？"} %>
-    </div>
   </div>
 <% end %>
 
