@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h2 class="board__title">
-  <%= @board.title %>
+<h2 class="title board__title">
+  Title: <%= @board.title %>
 </h2>
 
 <%= render 'comments/form', comment: @new_comment %>
