@@ -2,7 +2,8 @@
 
  DB Relation
 
-![image](https://user-images.githubusercontent.com/43266182/69704584-0f8d1880-1137-11ea-92cc-b4b3abaf96e7.png)
+![ateam](https://user-images.githubusercontent.com/43266182/69734290-11280200-1172-11ea-9a6c-f4e28617fb81.png)
+
 
 * Ruby version
 
