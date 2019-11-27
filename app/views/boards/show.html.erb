@@ -1,8 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h2 class="title board__title">
-  Title: <%= @board.title %>
-</h2>
+<div class="row">
+  <div class="s12">
+    <div class="card blue accent-2">
+      <div class="card-content white-text">
+        <h2 class="card-title title board__title">
+          <%= @board.title %>
+        </h2>
+        <%= @board.body %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= render 'comments/form', comment: @new_comment %>
 

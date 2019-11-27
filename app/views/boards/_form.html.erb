@@ -12,9 +12,13 @@
   <% end %>
 
   <div class="row">
-    <div class="input-field col s10">
+    <div class="input-field col s12">
       <%= form.label :title %>
       <%= form.text_field :title %>
+    </div>
+    <div class="input-field col s12">
+      <%= form.label :body %>
+      <%= form.text_area :body, class:"materialize-textarea" %>
     </div>
     <div class="input-field col s2">
       <%= form.submit class:"btn waves-effect waves-light black white-text"%>

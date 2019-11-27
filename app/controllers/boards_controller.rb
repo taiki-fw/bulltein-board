@@ -5,7 +5,6 @@ class BoardsController < ApplicationController
   # GET /boards.json
   def index
     @boards = Board.all
-    @board = Board.new
   end
 
   # GET /boards/1
@@ -72,6 +71,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title)
+      params.require(:board).permit(:title,:body)
     end
 end
