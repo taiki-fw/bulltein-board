@@ -1,9 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ DB Relation
 
-Things you may want to cover:
+![ateam](https://user-images.githubusercontent.com/43266182/69734290-11280200-1172-11ea-9a6c-f4e28617fb81.png)
+
 
 * Ruby version
 
@@ -20,5 +20,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
