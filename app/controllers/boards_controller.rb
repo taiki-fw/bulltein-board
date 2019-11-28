@@ -4,7 +4,19 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+    @sample = params[:sort]
+    case params[:sort]
+    when "1"
+      @boards = Board.all.order(updated_at: :desc)
+          # order(created_at: :desc)
+    when "2"
+      @boards = Board.select(:id, :title, :body, 'count(comments.id) AS comments')
+                           .joins(:comments)
+                           .group('boards.id')
+                           .order('comments desc')
+    else
+      @boards = Board.all.order(updated_at: :desc)
+    end
   end
 
   # GET /boards/1
