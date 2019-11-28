@@ -2,27 +2,7 @@
 
 <%= render 'boards/board-card', board: @board %>
 
-<div class="comment">
-  <%= link_to board_comment_path(@board, @comment), method: :delete, data: {confirm: "コメント：" + @comment.body + "\n削除しますか？"}, class: "btn-floating btn-small black white-text comment__action" do %>
-    <i class="material-icons">
-      clear
-    </i>
-  <% end %>
-  <%= link_to board_comment_path(@board, @comment), class: "comment__body" do %>
-    <div class="comment__content">
-      <h3 class="comment__title"><%= @comment.body %></h3>
-      <p class="time"><%= @comment.updated_at %></p>
-    </div>
-    <div class="comment__info">
-      <i class="material-icons">
-        reply
-      </i>
-      <span>
-          <%= @comment.replies.count %>
-        </span>
-    </div>
-  <% end %>
-</div>
+<%= render 'comment', comment: @comment %>
 
 <%= render 'replies/form', reply: @new_reply %>
 
