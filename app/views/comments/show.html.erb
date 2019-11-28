@@ -6,12 +6,8 @@
 
 <%= render 'replies/form', reply: @new_reply %>
 
-<% @replies.each do |reply| %>
-  <div class="reply">
-    <p><%= reply.body %></p>
-    <p class="time"><%= reply.updated_at %></p>
-  </div>
-<% end %>
+<%= render partial: 'replies/reply', collection: @replies %>
+
 
 <!--<%#= link_to 'Edit', edit_comment_path(@comment) %> |-->
 <%#= link_to 'Back', comments_path %>
