@@ -7,15 +7,14 @@ class BoardsController < ApplicationController
     @sample = params[:sort]
     case params[:sort]
     when "1"
-      @boards = Board.all.order(updated_at: :desc)
-          # order(created_at: :desc)
+      @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
+      # order(created_at: :desc)
     when "2"
-      @boards = Board.select(:id, :title, :body, 'count(comments.id) AS comments')
-                           .joins(:comments)
-                           .group('boards.id')
-                           .order('comments desc')
+      @pagy, @boards = pagy(Board.left_joins(:comments)
+                                .group(:id)
+                                .order('COUNT(comments.id) DESC'))
     else
-      @boards = Board.all.order(updated_at: :desc)
+      @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
     end
   end
 
@@ -76,13 +75,14 @@ class BoardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_board
-      @board = Board.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def board_params
-      params.require(:board).permit(:title,:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_board
+    @board = Board.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def board_params
+    params.require(:board).permit(:title, :body)
+  end
 end
