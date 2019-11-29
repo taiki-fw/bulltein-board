@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 
+# Page Gem
+gem 'pagy', '~> 3.5' # omit patch digit and use the latest if possible
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
