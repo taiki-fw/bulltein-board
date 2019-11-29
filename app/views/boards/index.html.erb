@@ -8,26 +8,7 @@
 <% end %>
 
 <div id="result">
-  <% @boards.each do |board| %>
-    <div class="board">
-      <div class="board__action close"><%= link_to board, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn red white-text" do %>
-          <i class="material-icons">
-            clear
-          </i>
-        <% end %></div>
-      <div class="board__body">
-        <%= link_to board do %>
-          <h2 class="board__title"><%= board.title %></h2>
-          <button class="btn-small light-blue">詳細</button>
-        <% end %>
-      </div>
-      <div class="board__action edit"><%= link_to edit_board_path(board), class: "btn-floating black" do %>
-          <i class="material-icons">
-            edit
-          </i>
-        <% end %></div>
-    </div>
-  <% end %>
+  <%= render partial:"board", collection:@boards %>
 </div>
 
 
