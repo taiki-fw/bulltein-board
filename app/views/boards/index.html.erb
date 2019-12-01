@@ -4,7 +4,7 @@
 
 <% if params[:page] != "2" %>
   <%= form_with(url: board_sort_path, class: "row") do %>
-    <%= select_tag 'sort', options_for_select({'最新' => 1, '人気' => 2}, 2), class: "col s10 browser-default" %>
+    <%= select_tag 'sort', options_for_select({'最新' => 1, '人気' => 2}, 1), class: "col s10 browser-default" %>
     <%= submit_tag '検索', class: "col s2 btn waves-effect waves-light" %>
   <% end %>
 <% end %>
