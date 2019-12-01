@@ -2,7 +2,7 @@
 
 <h1 class="title">Boards</h1>
 
-<%= form_with(url:boards_path, method: :get, class:"row", local: true )  do %>
+<%= form_with(url:sort_path, class:"row")  do %>
   <%= select_tag 'sort', options_for_select({'最新' => 1, '人気' => 2}, @sample), class: "col s10 browser-default" %>
   <%= submit_tag '検索', class:"col s2 btn waves-effect waves-light" %>
 <% end %>

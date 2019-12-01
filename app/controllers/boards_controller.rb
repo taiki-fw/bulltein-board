@@ -8,14 +8,35 @@ class BoardsController < ApplicationController
     case params[:sort]
     when "1"
       @boards = Board.all.order(updated_at: :desc)
-          # order(created_at: :desc)
+      # order(created_at: :desc)
     when "2"
       @boards = Board.select(:id, :title, :body, 'count(comments.id) AS comments')
-                           .joins(:comments)
-                           .group('boards.id')
-                           .order('comments desc')
+                    .joins(:comments)
+                    .group('boards.id')
+                    .order('comments desc')
     else
       @boards = Board.all.order(updated_at: :desc)
+    end
+  end
+
+  def sort
+    case params[:sort]
+    when "1"
+      @boards = Board.all.order(updated_at: :desc)
+      # order(created_at: :desc)
+    when "2"
+      @boards = Board.select(:id, :title, :body, 'count(comments.id) AS comments')
+                    .joins(:comments)
+                    .group('boards.id')
+                    .order('comments desc')
+    else
+      @boards = Board.all.order(updated_at: :desc)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @boards, notice: 'this board is sorted'}
+      format.js
+      format.json { render json: @board, status: 200 }
     end
   end
 
@@ -76,13 +97,14 @@ class BoardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_board
-      @board = Board.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def board_params
-      params.require(:board).permit(:title,:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_board
+    @board = Board.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def board_params
+    params.require(:board).permit(:title, :body)
+  end
 end
