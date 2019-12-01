@@ -4,21 +4,21 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all.order(updated_at: :desc)
+    @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
   end
 
   def sort
-    case params[:sort]
+    @sort_num = params[:sort]
+    case @sort_num
     when "1"
-      @boards = Board.all.order(updated_at: :desc)
+      @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
       # order(created_at: :desc)
     when "2"
-      @boards = Board.select(:id, :title, :body, 'count(comments.id) AS comments')
-                    .joins(:comments)
-                    .group('boards.id')
-                    .order('comments desc')
+      @pagy, @boards = pagy(Board.left_joins(:comments)
+                                .group(:id)
+                                .order('COUNT(comments.id) DESC'))
     else
-      @boards = Board.all.order(updated_at: :desc)
+      @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
     end
 
     respond_to do |format|
