@@ -4,8 +4,12 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @sample = params[:sort]
-    case params[:sort]
+    @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
+  end
+
+  def sort
+    @sort_num = params[:sort]
+    case @sort_num
     when "1"
       @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
       # order(created_at: :desc)
@@ -15,6 +19,12 @@ class BoardsController < ApplicationController
                                 .order('COUNT(comments.id) DESC'))
     else
       @pagy, @boards = pagy(Board.all.order(updated_at: :desc))
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @boards, notice: 'this board is sorted'}
+      format.js
+      format.json { render json: @board, status: 200 }
     end
   end
 
