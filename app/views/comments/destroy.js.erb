@@ -1,0 +1,2 @@
+document.getElementById('notice').innerHTML = "<%=j notice %>"
+document.getElementById('comments__result').innerHTML = '<%= escape_javascript(render partial: 'comments/comment', collection: @comments) %>'
