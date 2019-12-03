@@ -1,5 +1,5 @@
 <div class="comment">
-  <%= link_to board_comment_path(comment.board, comment), method: :delete, data: {confirm: "コメント：" + comment.body + "\n削除しますか？"}, class: "btn-floating btn-small black white-text comment__action" do %>
+  <%= link_to board_comment_path(comment.board, comment), method: :delete, remote: true,data: {confirm: "コメント：" + comment.body + "\n削除しますか？"}, class: "btn-floating btn-small black white-text comment__action" do %>
     <i class="material-icons">
       clear
     </i>
